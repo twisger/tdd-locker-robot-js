@@ -15,3 +15,8 @@ test('should not send a ticket store failed when store bag but no space', () => 
   const ticket = lockerRobot.store(new Bag());
   expect(ticket).toBeNull();
 });
+
+test('should throw an error when init lockerRobot but not pass locker size', () => {
+  const fn = () => new LockerRobot();
+  expect(fn).toThrowError();
+});
