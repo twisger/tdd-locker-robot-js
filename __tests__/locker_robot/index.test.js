@@ -27,3 +27,10 @@ test('should get bag successful when retrieve bag given a valid ticket', () => {
   const ticket = lockerRobot.store(bag);
   expect(lockerRobot.retrieve(ticket)).toBe(bag);
 });
+
+test('should retrieve failed and get no bag when retrieve bag given an invalid ticket', () => {
+  const lockerRobot = new LockerRobot(2);
+  const invalidTicket = new Ticket(3);
+  expect(lockerRobot.retrieve(invalidTicket)).toBeNull();
+  expect(lockerRobot.retrieve('ticket')).toBeNull();
+});

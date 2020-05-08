@@ -26,6 +26,9 @@ export class LockerRobot {
   }
 
   retrieve(ticket) {
-    return this.locker.splice(ticket.id, 1)[0];
+    if (ticket instanceof Ticket && ticket.id < this.lockerSize) {
+      return this.locker.splice(ticket.id, 1)[0];
+    }
+    return null;
   }
 }
