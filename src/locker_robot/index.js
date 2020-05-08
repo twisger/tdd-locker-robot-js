@@ -24,4 +24,8 @@ export class LockerRobot {
     }
     return null;
   }
+
+  retrieve(ticket) {
+    return this.locker.splice(ticket.id, 1)[0];
+  }
 }

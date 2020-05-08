@@ -20,3 +20,10 @@ test('should throw an error when init lockerRobot but not pass locker size', () 
   const fn = () => new LockerRobot();
   expect(fn).toThrowError();
 });
+
+test('should get bag successful when retrieve bag given a valid ticket', () => {
+  const lockerRobot = new LockerRobot(2);
+  const bag = new Bag();
+  const ticket = lockerRobot.store(bag);
+  expect(lockerRobot.retrieve(ticket)).toBe(bag);
+});
