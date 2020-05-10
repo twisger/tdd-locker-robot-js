@@ -53,3 +53,18 @@ test('should throw an error when init lockerRobot given locker size less than 0'
 
   expect(fn).toThrowError();
 });
+
+test('should return correct bag when retrieve bag given after retrieve another bag', () => {
+  const lockerRobot = new LockerRobot(3);
+  const bag1 = new Bag();
+  const bag2 = new Bag();
+  const bag3 = new Bag();
+
+  const ticket1 = lockerRobot.store(bag1);
+  const ticket2 = lockerRobot.store(bag2);
+  const ticket3 = lockerRobot.store(bag3);
+  lockerRobot.retrieve(ticket1);
+
+  expect(lockerRobot.retrieve(ticket2)).toBe(bag2);
+  expect(lockerRobot.retrieve((ticket3))).toBe(bag3);
+});

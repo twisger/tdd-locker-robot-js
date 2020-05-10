@@ -18,7 +18,7 @@ export class LockerRobot {
   }
 
   store(bag) {
-    if (this.lockerSize <= this.locker.length) {
+    if (this.lockerSize <= this.locker.filter(item => !!item).length) {
       return 'No space left!';
     }
     this.locker.push(bag);
@@ -27,7 +27,9 @@ export class LockerRobot {
 
   retrieve(ticket) {
     if (ticket instanceof Ticket && ticket.id < this.lockerSize) {
-      return this.locker.splice(ticket.id, 1)[0];
+      const bag = this.locker[ticket.id];
+      this.locker[ticket.id] = undefined;
+      return bag;
     }
     return 'Please input valid ticket!';
   }
