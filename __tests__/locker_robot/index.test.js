@@ -47,3 +47,9 @@ test('should throw an error when init lockerRobot given locker size is 0', () =>
 
   expect(fn).toThrowError();
 });
+
+test('should throw an error when init lockerRobot given locker size less than 0', () => {
+  const fn = () => new LockerRobot(-1);
+
+  expect(fn).toThrowError();
+});
