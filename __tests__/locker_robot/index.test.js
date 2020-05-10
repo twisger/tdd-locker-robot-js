@@ -1,7 +1,7 @@
 import { LockerRobot, Ticket, Bag } from '../../src/locker_robot';
 
 
-test('should send a ticket and store successfully when store bag', () => {
+test('should send a ticket and store successfully when store bag given enough space', () => {
   const lockerRobot = new LockerRobot(2);
   const bag = new Bag();
 
@@ -10,7 +10,7 @@ test('should send a ticket and store successfully when store bag', () => {
   expect(ticket).toBeInstanceOf(Ticket);
 });
 
-test('should not send a ticket store failed when store bag but no space', () => {
+test('should not send a ticket store failed when store bag given no space', () => {
   const lockerRobot = new LockerRobot(2);
   lockerRobot.store(new Bag());
   lockerRobot.store(new Bag());
@@ -20,7 +20,7 @@ test('should not send a ticket store failed when store bag but no space', () => 
   expect(ticket).toBeNull();
 });
 
-test('should throw an error when init lockerRobot but not pass locker size', () => {
+test('should throw an error when init lockerRobot given not pass locker size', () => {
   const fn = () => new LockerRobot();
 
   expect(fn).toThrowError();
