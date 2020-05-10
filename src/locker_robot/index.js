@@ -18,11 +18,11 @@ export class LockerRobot {
   }
 
   store(bag) {
-    if (this.lockerSize > this.locker.length) {
-      this.locker.push(bag);
-      return new Ticket(this.locker.length - 1);
+    if (this.lockerSize <= this.locker.length) {
+      return 'No space left!';
     }
-    return null;
+    this.locker.push(bag);
+    return new Ticket(this.locker.length - 1);
   }
 
   retrieve(ticket) {

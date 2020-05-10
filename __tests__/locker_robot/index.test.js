@@ -10,14 +10,14 @@ test('should send a ticket and store successfully when store bag given enough sp
   expect(ticket).toBeInstanceOf(Ticket);
 });
 
-test('should not send a ticket store failed when store bag given no space', () => {
+test('should send error message when store bag given no space', () => {
   const lockerRobot = new LockerRobot(2);
   lockerRobot.store(new Bag());
   lockerRobot.store(new Bag());
 
-  const ticket = lockerRobot.store(new Bag());
+  const message = lockerRobot.store(new Bag());
 
-  expect(ticket).toBeNull();
+  expect(message).toBe('No space left!');
 });
 
 test('should throw an error when init lockerRobot given not pass locker size', () => {
