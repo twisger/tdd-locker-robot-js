@@ -41,3 +41,9 @@ test('should retrieve failed and get no bag when retrieve bag given an invalid t
   expect(lockerRobot.retrieve(invalidTicket)).toBeNull();
   expect(lockerRobot.retrieve('ticket')).toBeNull();
 });
+
+test('should throw an error when init lockerRobot given locker size is 0', () => {
+  const fn = () => new LockerRobot(0);
+
+  expect(fn).toThrowError();
+});
