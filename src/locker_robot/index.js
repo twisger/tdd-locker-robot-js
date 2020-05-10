@@ -29,6 +29,6 @@ export class LockerRobot {
     if (ticket instanceof Ticket && ticket.id < this.lockerSize) {
       return this.locker.splice(ticket.id, 1)[0];
     }
-    return null;
+    return 'Please input valid ticket!';
   }
 }
