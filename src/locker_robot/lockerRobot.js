@@ -8,5 +8,6 @@ export class LockerRobot {
     if (firstLockerHaveSpace) {
       return firstLockerHaveSpace.store(bag);
     }
+    return 'No space left!';
   }
 }

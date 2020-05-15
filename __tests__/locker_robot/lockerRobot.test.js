@@ -39,3 +39,14 @@ describe('should return a ticket and store in first locker have space when store
     expect(locker2.retrieve(ticket)).toBe('Please input valid ticket!');
   });
 });
+
+test('should return message and store failed when store given all lockers have no space', () => {
+  const locker1 = new Locker(1);
+  const locker2 = new Locker(1);
+  const lockerRobot = new LockerRobot(locker1, locker2);
+  const bag = new Bag();
+  locker1.store(new Bag());
+  locker2.store(new Bag());
+
+  expect(lockerRobot.store(bag)).toBe('No space left!');
+});
