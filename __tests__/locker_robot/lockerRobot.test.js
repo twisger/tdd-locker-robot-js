@@ -82,3 +82,23 @@ test('should send a message when retrieve bag given used ticket', () => {
 
   expect(lockerRobot.retrieve(ticket)).toBe('Please input valid ticket!');
 });
+
+test('should retrieve last bag in locker 1 when retrieve given fist locker have space after retrieve a bag from it and second locker have space', () => {
+  const locker1 = new Locker(2);
+  const locker2 = new Locker(2);
+  const lockerRobot = new LockerRobot(locker1, locker2);
+  const bag1 = new Bag();
+  const bag2 = new Bag();
+  const bag3 = new Bag();
+  const bag4 = new Bag();
+  const ticket1 = lockerRobot.store(bag1);
+  const ticket2 = lockerRobot.store(bag2);
+  const ticket3 = lockerRobot.store(bag3);
+
+  lockerRobot.retrieve(ticket1);
+  const ticket4 = lockerRobot.store(bag4);
+
+  expect(locker1.retrieve(ticket2)).toBe(bag2);
+  expect(locker2.retrieve(ticket3)).toBe(bag3);
+  expect(locker1.retrieve(ticket4)).toBe(bag4);
+});

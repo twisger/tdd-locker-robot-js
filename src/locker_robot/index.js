@@ -30,7 +30,7 @@ export class Locker {
 
   retrieve(ticket) {
     const isTicket = ticket instanceof Ticket;
-    const isTicketValid = ticket.id < this.lockerSize && ticket.lockerId === this.id && !ticket.isUsed;
+    const isTicketValid = ticket.lockerId === this.id && !ticket.isUsed;
     if (isTicket && isTicketValid) {
       const bag = this.locker[ticket.id];
       this.locker[ticket.id] = undefined;
