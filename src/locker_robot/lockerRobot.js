@@ -4,7 +4,7 @@ export class LockerRobot {
   }
 
   store(bag) {
-    const firstLockerHaveSpace = this.lockers.filter(locker => locker.haveSpace())[0];
+    const firstLockerHaveSpace = this.lockers.find(locker => locker.haveSpace());
     if (firstLockerHaveSpace) {
       return firstLockerHaveSpace.store(bag);
     }
