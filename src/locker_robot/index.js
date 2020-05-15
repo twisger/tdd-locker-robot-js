@@ -8,7 +8,7 @@ export class Bag {
 
 }
 
-export class LockerRobot {
+export class Locker {
   constructor(lockerSize) {
     if (typeof lockerSize !== 'number' || lockerSize <= 0) {
       throw new Error('must set a valid locker size');
