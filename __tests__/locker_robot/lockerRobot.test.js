@@ -50,3 +50,13 @@ test('should return message and store failed when store given all lockers have n
 
   expect(lockerRobot.store(bag)).toBe('No space left!');
 });
+
+test('should send the bag when retrieve bag given valid ticket', () => {
+  const locker1 = new Locker(1);
+  const locker2 = new Locker(1);
+  const lockerRobot = new LockerRobot(locker1, locker2);
+  const bag = new Bag();
+  const ticket = lockerRobot.store(bag);
+
+  expect(lockerRobot.retrieve(ticket)).toBe(bag);
+});

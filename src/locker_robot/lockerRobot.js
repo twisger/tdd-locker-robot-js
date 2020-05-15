@@ -10,4 +10,9 @@ export class LockerRobot {
     }
     return 'No space left!';
   }
+
+  retrieve(ticket) {
+    const locker = this.lockers.find(item => item.id === ticket.lockerId);
+    return locker.retrieve(ticket);
+  }
 }
