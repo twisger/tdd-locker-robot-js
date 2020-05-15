@@ -4,8 +4,9 @@ export class LockerRobot {
   }
 
   store(bag) {
-    if (this.lockers.every(locker => locker.haveSpace())) {
-      return this.lockers[0].store(bag);
+    const firstLockerHaveSpace = this.lockers.filter(locker => locker.haveSpace())[0];
+    if (firstLockerHaveSpace) {
+      return firstLockerHaveSpace.store(bag);
     }
   }
 }
