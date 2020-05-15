@@ -13,6 +13,9 @@ export class LockerRobot {
 
   retrieve(ticket) {
     const locker = this.lockers.find(item => item.id === ticket.lockerId);
-    return locker.retrieve(ticket);
+    if (locker) {
+      return locker.retrieve(ticket);
+    }
+    return 'Please input valid ticket!';
   }
 }
