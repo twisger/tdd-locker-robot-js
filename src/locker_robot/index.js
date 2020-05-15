@@ -2,6 +2,7 @@ export class Ticket {
   constructor(index, lockerId) {
     this.id = index;
     this.lockerId = lockerId;
+    this.isUsed = false;
   }
 }
 
@@ -28,9 +29,10 @@ export class Locker {
   }
 
   retrieve(ticket) {
-    if (ticket instanceof Ticket && ticket.id < this.lockerSize && ticket.lockerId === this.id) {
+    if (ticket instanceof Ticket && ticket.id < this.lockerSize && ticket.lockerId === this.id && !ticket.isUsed) {
       const bag = this.locker[ticket.id];
       this.locker[ticket.id] = undefined;
+      ticket.isUsed = true;
       return bag;
     }
     return 'Please input valid ticket!';
