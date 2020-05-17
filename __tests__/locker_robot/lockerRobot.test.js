@@ -9,8 +9,18 @@ test('should return a ticket and store in first locker when store bag given all 
 
   const ticket = lockerRobot.store(bag);
 
-  expect(locker2.retrieve(ticket)).toBe('Please input valid ticket!');
   expect(locker1.retrieve(ticket)).toBe(bag);
+});
+
+test('should not stored in second locker when store bag given two locker all have space', () => {
+  const locker1 = new Locker(1);
+  const locker2 = new Locker(1);
+  const lockerRobot = new LockerRobot(locker1, locker2);
+  const bag = new Bag();
+
+  const ticket = lockerRobot.store(bag);
+
+  expect(locker2.retrieve(ticket)).toBe('Please input valid ticket!');
 });
 
 describe('should return a ticket and store in first locker have space when store bag given not all locker have space', () => {
