@@ -1,6 +1,7 @@
 import { Locker, Ticket, Bag } from '../../src/locker_robot';
 
-test('should send a ticket and store successfully when store bag given enough space', () => {
+
+test('should send a ticket and store successfully when store bag given locker have space', () => {
   const locker = new Locker(2);
   const bag = new Bag();
 
