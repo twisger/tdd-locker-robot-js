@@ -1,6 +1,5 @@
 import { Locker, Ticket, Bag } from '../../src/locker_robot';
 
-
 test('should send a ticket and store successfully when store bag given enough space', () => {
   const locker = new Locker(2);
   const bag = new Bag();
@@ -67,4 +66,14 @@ test('should return correct bag when retrieve bag given after retrieve another b
 
   expect(locker.retrieve(ticket2)).toBe(bag2);
   expect(locker.retrieve((ticket3))).toBe(bag3);
+});
+
+test('should send a message when retrieve bag given used ticket and locker', () => {
+  const locker = new Locker(1);
+  const bag = new Bag();
+  const ticket1 = locker.store(bag);
+  locker.retrieve(ticket1);
+  locker.store(new Bag());
+
+  expect(locker.retrieve(ticket1)).toBe('Please input valid ticket!');
 });
