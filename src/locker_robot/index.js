@@ -41,6 +41,10 @@ export class Locker {
   }
 
   haveSpace() {
-    return this.lockerSize > this.locker.filter(item => !!item).length;
+    return this.getSpaceLeft() > 0;
+  }
+
+  getSpaceLeft() {
+    return this.lockerSize - this.locker.filter(item => !!item).length;
   }
 }
