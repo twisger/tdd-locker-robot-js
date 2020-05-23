@@ -22,3 +22,15 @@ test('should bag stored in locker A and return a ticket when store bag given sma
 
   expect(lockerA.retrieve(ticket)).toBe(bag);
 });
+
+test('should store failed and send a message "No space left!" when store bag given smart robot, locker A whose space left is 0 and locker B whose space left is 0', () => {
+  const lockerA = new Locker(1);
+  const lockerB = new Locker(1);
+  const smartLockerRobot = new SmartLockerRobot(lockerA, lockerB);
+  smartLockerRobot.store(new Bag());
+  smartLockerRobot.store(new Bag());
+
+  const message = smartLockerRobot.store(new Bag());
+
+  expect(message).toBe('No space left!');
+});
