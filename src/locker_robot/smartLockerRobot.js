@@ -4,8 +4,7 @@ export class SmartLockerRobot {
   }
 
   store(bag) {
-    const maxSpaceLeft = Math.max(...this.lockers.map(locker => locker.getSpaceLeft()));
-    const targetLocker = this.lockers.find(locker => locker.getSpaceLeft() === maxSpaceLeft);
+    const targetLocker = this.lockers.reduce((pre, cur) => (pre.getSpaceLeft() > cur.getSpaceLeft() ? pre : cur));
     return targetLocker.store(bag);
   }
 
