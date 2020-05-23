@@ -8,4 +8,9 @@ export class SmartLockerRobot {
     const targetLocker = this.lockers.find(locker => locker.getSpaceLeft() === maxSpaceLeft);
     return targetLocker.store(bag);
   }
+
+  retrieve(ticket) {
+    const locker = this.lockers.find(item => item.id === ticket.lockerId);
+    return locker.retrieve(ticket);
+  }
 }

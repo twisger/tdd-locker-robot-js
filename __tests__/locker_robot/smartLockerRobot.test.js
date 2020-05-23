@@ -34,3 +34,13 @@ test('should store failed and send a message "No space left!" when store bag giv
 
   expect(message).toBe('No space left!');
 });
+
+test('should retrieve successfully and send the bag when retrieve bag given smart robot and valid ticket', () => {
+  const lockerA = new Locker(2);
+  const lockerB = new Locker(3);
+  const smartLockerRobot = new SmartLockerRobot(lockerA, lockerB);
+  const bag = new Bag();
+  const ticket = smartLockerRobot.store(bag);
+
+  expect(smartLockerRobot.retrieve(ticket)).toBe(bag);
+});
