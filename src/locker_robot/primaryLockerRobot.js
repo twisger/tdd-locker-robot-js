@@ -1,4 +1,4 @@
-export class LockerRobot {
+export class PrimaryLockerRobot {
   constructor(...lockers) {
     this.lockers = lockers;
   }

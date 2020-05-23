@@ -1,10 +1,10 @@
 import { Bag, Locker, Ticket } from '../../src/locker_robot';
-import { LockerRobot } from '../../src/locker_robot/lockerRobot';
+import { PrimaryLockerRobot } from '../../src/locker_robot/primaryLockerRobot';
 
 test('should return a ticket and store in first locker when store bag given all locker have space', () => {
   const locker1 = new Locker(1);
   const locker2 = new Locker(1);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag = new Bag();
 
   const ticket = lockerRobot.store(bag);
@@ -15,7 +15,7 @@ test('should return a ticket and store in first locker when store bag given all 
 test('should not stored in second locker when store bag given two locker all have space', () => {
   const locker1 = new Locker(1);
   const locker2 = new Locker(1);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag = new Bag();
 
   const ticket = lockerRobot.store(bag);
@@ -27,7 +27,7 @@ describe('should return a ticket and store in first locker have space when store
   test('given first locker with no space and second locker with space', () => {
     const locker1 = new Locker(1);
     const locker2 = new Locker(1);
-    const lockerRobot = new LockerRobot(locker1, locker2);
+    const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
     const bag = new Bag();
     locker1.store(new Bag());
 
@@ -39,7 +39,7 @@ describe('should return a ticket and store in first locker have space when store
   test('given first locker with space and second locker with no space', () => {
     const locker1 = new Locker(1);
     const locker2 = new Locker(1);
-    const lockerRobot = new LockerRobot(locker1, locker2);
+    const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
     const bag = new Bag();
     locker2.store(new Bag());
 
@@ -53,7 +53,7 @@ describe('should return a ticket and store in first locker have space when store
 test('should return message and store failed when store given all lockers have no space', () => {
   const locker1 = new Locker(1);
   const locker2 = new Locker(1);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag = new Bag();
   locker1.store(new Bag());
   locker2.store(new Bag());
@@ -64,7 +64,7 @@ test('should return message and store failed when store given all lockers have n
 test('should send the bag when retrieve bag given valid ticket', () => {
   const locker1 = new Locker(1);
   const locker2 = new Locker(1);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag = new Bag();
   const ticket = lockerRobot.store(bag);
 
@@ -74,7 +74,7 @@ test('should send the bag when retrieve bag given valid ticket', () => {
 test('should send a message when retrieve bag given an invalid ticket', () => {
   const locker1 = new Locker(1);
   const locker2 = new Locker(1);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag = new Bag();
   lockerRobot.store(bag);
 
@@ -84,7 +84,7 @@ test('should send a message when retrieve bag given an invalid ticket', () => {
 test('should retrieve last bag in locker 1 when retrieve given fist locker have space after retrieve a bag from it and second locker have space', () => {
   const locker1 = new Locker(2);
   const locker2 = new Locker(2);
-  const lockerRobot = new LockerRobot(locker1, locker2);
+  const lockerRobot = new PrimaryLockerRobot(locker1, locker2);
   const bag1 = new Bag();
   const bag2 = new Bag();
   const bag3 = new Bag();
