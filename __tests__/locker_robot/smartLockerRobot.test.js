@@ -44,3 +44,13 @@ test('should retrieve successfully and send the bag when retrieve bag given smar
 
   expect(smartLockerRobot.retrieve(ticket)).toBe(bag);
 });
+
+test('should retrieve failed and send a message "Please input valid ticket!" when retrieve bag given smart robot and invalid ticket', () => {
+  const lockerA = new Locker(2);
+  const lockerB = new Locker(3);
+  const smartLockerRobot = new SmartLockerRobot(lockerA, lockerB);
+  const bag = new Bag();
+  smartLockerRobot.store(bag);
+
+  expect(smartLockerRobot.retrieve('invalid ticket')).toBe('Please input valid ticket!');
+});
