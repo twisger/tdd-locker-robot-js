@@ -1,3 +1,5 @@
+import { retrieveBag } from './utils';
+
 export class SmartLockerRobot {
   constructor(...lockers) {
     this.lockers = lockers;
@@ -9,10 +11,6 @@ export class SmartLockerRobot {
   }
 
   retrieve(ticket) {
-    const locker = this.lockers.find(item => item.id === ticket.lockerId);
-    if (locker) {
-      return locker.retrieve(ticket);
-    }
-    return 'Please input valid ticket!';
+    return retrieveBag(this.lockers, ticket);
   }
 }
