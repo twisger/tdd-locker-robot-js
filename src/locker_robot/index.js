@@ -47,4 +47,8 @@ export class Locker {
   getSpaceLeft() {
     return this.lockerSize - this.locker.filter(item => !!item).length;
   }
+
+  getVacancyRate() {
+    return this.getSpaceLeft() / this.lockerSize;
+  }
 }
