@@ -69,3 +69,16 @@ test('should stored in locker A and return a ticket when store given locker A sp
 
   expect(lockerA.retrieve(ticket)).toBe(bag);
 });
+
+test('should stored in locker A and return a ticket when store given locker A space left 1 size 2 and locker B space left 1 size 3', () => {
+  const lockerA = new Locker(2);
+  const lockerB = new Locker(3);
+  lockerA.store(new Bag());
+  batchStoreBag(lockerB, 2);
+  const superLockerRobot = new SuperLockerRobot(lockerA, lockerB);
+  const bag = new Bag();
+
+  const ticket = superLockerRobot.store(bag);
+
+  expect(lockerA.retrieve(ticket)).toBe(bag);
+});
